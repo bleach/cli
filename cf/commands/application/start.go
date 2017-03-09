@@ -358,6 +358,7 @@ Use '{{.Command}}' for more in depth log information.`,
 
 func (cmd *Start) waitForOneRunningInstance(app models.Application) error {
 	timer := time.NewTimer(cmd.StartupTimeout)
+	cmd.ui.Say("Waiting for the first instance to start")
 
 	for {
 		select {
@@ -375,7 +376,7 @@ func (cmd *Start) waitForOneRunningInstance(app models.Application) error {
 				continue
 			}
 
-			cmd.ui.Say(instancesDetails(count))
+			cmd.ui.Say(".")
 
 			if count.running > 0 {
 				return nil
