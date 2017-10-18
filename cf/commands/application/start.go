@@ -376,7 +376,7 @@ func (cmd *Start) waitForOneRunningInstance(app models.Application) error {
 				continue
 			}
 
-			cmd.ui.Say(".")
+			cmd.ui.LoadingIndication()
 
 			if count.running > 0 {
 				return nil
